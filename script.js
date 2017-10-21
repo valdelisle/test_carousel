@@ -35,7 +35,7 @@ $(document).ready(function() {
 
     if (images.length) {
       var content = images.reduce(function(sum, value) {
-        return sum + "<div><img src=" + value.url + " />"+value.caption+"</div>";
+        return sum + "<div><img src=" + value.url + " /><p/>"+value.caption+"</div>";
       }, "");
       //var list = $('<ul />').html(content);
       carousel.append(content);
