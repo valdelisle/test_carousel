@@ -8,8 +8,8 @@
     }
 
     .slider {
-        width: 50%;
-        margin: 100px auto;
+        width: 80%;
+        margin: 50px auto;
     }
 
     .slick-slide {
@@ -22,7 +22,7 @@
 
     .slick-prev:before,
     .slick-next:before {
-      color: black;
+      color: white;
     }
 
 
@@ -32,7 +32,7 @@
     }
     
     .slick-active {
-      opacity: .5;
+      opacity: .7;
     }
 
     .slick-current {

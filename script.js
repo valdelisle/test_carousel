@@ -21,7 +21,7 @@ $(document).ready(function() {
       return {
         id: item.id,
         caption: item.caption,
-        url: item.images.thumbnail
+        url: item.images.normal //thumbnail or normal
       };
     });
 
@@ -35,7 +35,7 @@ $(document).ready(function() {
 
     if (images.length) {
       var content = images.reduce(function(sum, value) {
-        return sum + "<div><img src=" + value.url + " /></div>";
+        return sum + "<div><img src=" + value.url + " />"+value.caption+"</div>";
       }, "");
       //var list = $('<ul />').html(content);
       carousel.append(content);
