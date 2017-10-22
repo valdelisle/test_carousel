@@ -7,7 +7,7 @@ It supports lazy loading, mouse and touch slide, etc.
 ## API
 Then I loaded the API collection in Postman, set the key and played with the resources.
 
-(I should probably have RTFM of the API at that stage but it's more fun to just explore with Postman =) besides the API is nice and well organised )
+(I should probably have RTFM of the API at that stage but it's more fun to just explore with Postman =) besides the API is nice and well organised, love the HATEOAS/HAL links!)
 
 I started with *Customer GET info to confirm my customer ID* to confirm who I am, then found *Media GET media of a customer*.
 
@@ -33,11 +33,12 @@ I was about to add the jQuery CDN link, but noticed that Slick already included 
 Using Postman, I dumped the json response into a **local json file**, which I used to parse and test initially.
 I found out it was not necessary to parse twice with JSON.Parse, as it was already deserialised in an object (Mountebank gave me some habits).
 
-Once I loaded the fairly large JSON, I projected the content I was interested in, into an array of objects using a **map** (I resisted the urge to import lodash).
+## Going functional with map reduce
+Once I loaded the fairly large JSON, I projected the content I was interested in, into an array of objects using a **map** (I resisted the urge to import lodash - I love js when it's functional).
 
-Then I proceeded to build the HTML required for the carousel.
+Then I proceeded to build the HTML required for the carousel, using a **reduce** (did I say I love functional?).
 
-I bumped into an issue with async, which I easily figured out with a little console debugging - I eventually realised that I had to 'apply Slick' only after I created my carousel, or my additions to the DOM wouldn't be ready.
+I bumped into an issue with the timing of async calls, which I easily figured out with a little console debugging - I eventually realised that I had to 'apply Slick' only after I created my carousel, or my additions to the DOM wouldn't be ready.
 
 ## Weird API issues
 Once I got the images working, I swapped the local static json with with the actual https uri from postman, but got a 401 on the browser, which never happened from Postman?
@@ -47,6 +48,8 @@ I had a weird issue which seemed to be caused by the version location in query (
 I solved it by swapping the order of the parameters in the query string??
 
 I also noticed that the response format had changed (a 'media' level had disappeared from the json).
+
+EDIT: I found the issue was with the URL which I should have copied from Postam's console - all working now.
 
 ## Cleanup
 Finally, I split js and css into their own files, cleaned up the dead code and played a little with the CSS to make it look better.

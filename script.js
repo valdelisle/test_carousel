@@ -4,9 +4,10 @@ $(document).ready(function() {
   var carousel = $("#my-carousel");
 
   //works with removed version? version=v2.2&amp;
-  var url =
-    "https://photorankapi-a.akamaihd.net/customers/215757/media/recent?auth_token=0a40a13fd9d531110b4d6515ef0d6c529acdb59e81194132356a1b8903790c18&amp;version=v2.2&amp;rights_given=0&amp;include_tagged_galleries=1";
+  //var url = "https://photorankapi-a.akamaihd.net/customers/215757/media/recent?auth_token=0a40a13fd9d531110b4d6515ef0d6c529acdb59e81194132356a1b8903790c18&amp;version=v2.2&amp;rights_given=0&amp;include_tagged_galleries=1";
 
+  //copied from Postman Console - now compatible with 1st download
+    var url = 'https://photorankapi-a.akamaihd.net/customers/215757/media/recent?version=v2.2&auth_token=0a40a13fd9d531110b4d6515ef0d6c529acdb59e81194132356a1b8903790c18&rights_given=0&include_tagged_galleries=1'
   var testUrl = "./data_sample.json";
 
   console.log("getting content...");
@@ -14,10 +15,10 @@ $(document).ready(function() {
   $.getJSON(url, function(jsonData) {
     //check sample size
     console.log("json loaded");
-    console.log("Sample Size: ", jsonData.data._embedded.length);
+    console.log("Sample Size: ", jsonData.data._embedded.media.length);
 
     //project in simpler object
-    var images = jsonData.data._embedded.map(function(item) {
+    var images = jsonData.data._embedded.media.map(function(item) {
       return {
         id: item.id,
         caption: item.caption,
